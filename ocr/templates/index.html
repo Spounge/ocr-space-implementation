@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>OCR App</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<h1>OCR App</h1>
+	<form method="post" enctype="multipart/form-data">{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Send message">
+	</form>
+	{% if results %}
+		{% for result in results %}
+			<h2>Page {{ forloop.counter }}</h2>
+			<p>{{ result|linebreaks }}</p>
+		{% endfor %}
+	{% endif %}
+</body>
+</html>
